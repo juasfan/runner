@@ -1,0 +1,35 @@
+button {
+  width: 288px;
+  height: 45px;
+  padding: 15px 22px;
+  font-size: 15px;
+  border-radius: 45px;
+  border: none;
+  display: block;
+  text-transform: uppercase;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.16);
+  }
+
+  &.btn-primary {
+    background: #36558f;
+    color: white;
+  }
+
+  &.btn-primary-outline {
+    background: white;
+    color: #36558f;
+    border: 1px solid #36558f;
+  }
+
+  &.circle {
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #36558f;
+    color: white;
+  }
+}

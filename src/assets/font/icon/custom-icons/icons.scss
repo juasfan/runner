@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'custom-icons';
+  src: url('assets/font/icon/custom-icons/icons.eot');
+  src: url('assets/font/icon/custom-icons/icons.eot')
+      format('embedded-opentype'),
+    url('assets/font/icon/custom-icons/icons.ttf') format('truetype'),
+    url('assets/font/icon/custom-icons/icons.woff') format('woff'),
+    url('assets/font/icon/custom-icons/icons.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^='custom-icon-'],
+[class*=' custom-icon-'],
+[class^='stars-'],
+[class*=' stars-'] {
+  font-family: 'custom-icons' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 24px;
+  letter-spacing: normal;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'liga';
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.custom-icon-fish:before {
+  content: '\e900';
+}
+.custom-icon-meat:before {
+  content: '\e901';
+}
+.custom-icon-cheese:before {
+  content: '\e902';
+}
+.custom-icon-bread:before {
+  content: '\e903';
+}
+.custom-icon-dairy:before {
+  content: '\e904';
+}
+.custom-icon-fruit:before {
+  content: '\e904';
+}
+.custom-icon-vegetable:before {
+  content: '\e905';
+}
+.custom-icon-star-full:before {
+  content: '\e9d9';
+}
+.custom-icon-star-half:before {
+  content: '\e9d8';
+}
+.custom-icon-star-empty:before {
+  content: '\e9d7';
+}

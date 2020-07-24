@@ -1,0 +1,59 @@
+<ion-content class="ion-padding">
+  <div class="statistic">
+    <div class="heading">
+      <div class="payment">Payment</div>
+      <div class="date">{{ todayDate() }}</div>
+    </div>
+    <div class="total">
+      <div class="item">
+        <div class="label">Orders</div>
+        <div class="value">{{ formatPrice(product_total) }}</div>
+      </div>
+      <div class="item">
+        <div class="label">Delivery</div>
+        <div class="value">{{ formatPrice(delivery_total) }}</div>
+      </div>
+      <div class="item">
+        <div class="label">Total</div>
+        <div class="value">{{ formatPrice(total) }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <ion-slides [options]="slideOpts" #daySlides>
+    <ion-slide *ngFor="let day of days"> {{ day }}</ion-slide>
+  </ion-slides> -->
+
+  <div class="records">
+    <div class="daily" *ngFor="let record of records">
+      <div class="subhead" *ngIf="record.payments.length > 0">
+        {{ formatDate(record.date) }}
+      </div>
+      <div
+        class="card"
+        *ngFor="let payment of record.payments"
+        (click)="edit(record,payment)"
+      >
+        <div class="title">{{ payment.title }}</div>
+        <div *ngIf="!payment.note" class="misc">
+          {{ formatPrice(payment.total) }}
+        </div>
+        <div *ngIf="payment.note" class="misc">
+          {{ payment.note }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty-state" *ngIf="records.length < 1">
+    <img src="assets/svg/undraw_back_home_nl5c.svg" />
+    <div>It seems like you don't have any record for now. Starts tracking!</div>
+  </div>
+
+  <ion-fab vertical="bottom" slot="fixed" class="d-f jc-fe">
+    <button class="circle" (click)="add()">
+      <i class="icons-rounded">add</i>
+      <ion-ripple-effect></ion-ripple-effect>
+    </button>
+  </ion-fab>
+</ion-content>

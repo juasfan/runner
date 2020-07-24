@@ -1,0 +1,54 @@
+//default colors
+:root {
+  --color-primary: #5266a7;
+  --color-secondary: #388ded;
+  --color-3: #3cccfa;
+  --color-4: #fff200;
+  --color-5: #ffffff;
+  --color-6: #555555;
+  --color-7: #9a9b9e;
+  --color-8: #000000;
+  --color-9: #9348fb;
+  --color-10: #3ccdfa;
+  --color-black-transparent: rgba(0, 0, 0, 0.15);
+  --color-black-transparent-2: rgba(0, 0, 0, 0.5);
+  --color-positive: #20b303;
+  --color-negative: #f40000;
+  --color-favourite: #f7941d;
+  --color-11: #5265a7;
+  --color-12: #f8f8f8;
+  --color-13: #ebebeb;
+  --color-14: #708090;
+  --color-warning: #ffcc00;
+  --color-15: #c8c7cc;
+  --color-16: #b6b6b6;
+  --color-17: #dddddd;
+  --color-18: #999999;
+}
+// pass variables into a sass map
+$variables: (
+  --color-primary: var(--color-primary),
+  --color-secondary: var(--color-secondary),
+  --color-3: var(--color-3),
+  --color-4: var(--color-4),
+  --color-5: var(--color-5),
+  --color-6: var(--color-6),
+  --color-7: var(--color-7),
+  --color-8: var(--color-8),
+  --color-9: var(--color-9),
+  --color-10: var(--color-10),
+  --color-black-transparent: var(--color-black-transparent),
+  --color-black-transparent-2: var(--color-black-transparent-2),
+  --color-favourite: var(--color-favourite),
+  --color-11: var(--color-11),
+  --color-12: var(--color-12),
+  --color-positive: var(--color-positive),
+  --color-negative: var(--color-negative),
+  --color-13: var(--color-13),
+  --color-14: var(--color-14),
+  --color-warning: var(--color-warning),
+  --color-15: var(--color-15),
+  --color-16: var(--color-16),
+  --color-17: var(--color-17),
+  --color-18: var(--color-18)
+);

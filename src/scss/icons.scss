@@ -1,0 +1,83 @@
+@import 'assets/font/icon/custom-icons/icons.scss';
+@import 'assets/font/icon/pro-icons/icons.scss';
+
+/* fallback */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('assets/font/icon/material-icons/MaterialIcons-regular.woff2')
+    format('woff2');
+}
+/* fallback */
+@font-face {
+  font-family: 'Material Icons Outlined';
+  font-style: normal;
+  font-weight: 400;
+  src: url('assets/font/icon/material-icons/MaterialIcons-outlined.woff2')
+    format('woff2');
+}
+/* fallback */
+@font-face {
+  font-family: 'Material Icons Round';
+  font-style: normal;
+  font-weight: 400;
+  src: url('assets/font/icon/material-icons/MaterialIcons-round.woff2')
+    format('woff2');
+}
+/* fallback */
+@font-face {
+  font-family: 'Material Icons Sharp';
+  font-style: normal;
+  font-weight: 400;
+  src: url('assets/font/icon/material-icons/MaterialIcons-sharp.woff2')
+    format('woff2');
+}
+/* fallback */
+@font-face {
+  font-family: 'Material Icons Two Tone';
+  font-style: normal;
+  font-weight: 400;
+  src: url('assets/font/icon/material-icons/MaterialIcons-twotone.woff2')
+    format('woff2');
+}
+
+.general {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.icons {
+  font-family: 'Material Icons';
+  @extend .general;
+}
+
+.icons-outlined {
+  font-family: 'Material Icons Outlined';
+  @extend .general;
+}
+
+.icons-rounded {
+  font-family: 'Material Icons Round';
+  @extend .general;
+}
+
+.icons-sharp {
+  font-family: 'Material Icons Sharp';
+  @extend .general;
+}
+
+.icons-two-tone {
+  font-family: 'Material Icons Two Tone';
+  @extend .general;
+}
