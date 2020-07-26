@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as localforage from 'localforage';
-import { DailyRecord } from 'src/app/pages/home/home.service';
+import { Payment } from './record.service';
 
 @Injectable({
   providedIn: 'root',
@@ -30,5 +30,5 @@ export class LocalStorageService {
 }
 
 export interface LocalStorageItems {
-  records: DailyRecord[];
+  payments: Payment[];
 }
