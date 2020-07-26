@@ -1,18 +1,27 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-import { IonicModule } from '@ionic/angular';
-
-import { HomePageRoutingModule } from './home-routing.module';
-
 import { HomePage } from './home.page';
+import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FormComponent } from './form/form.component';
-import { EditComponent } from './edit/edit.component';
+import { AddPaymentComponent } from './add-payment/add-payment.component';
+import { EditPaymentComponent } from './edit-payment/edit-payment.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: HomePage,
+  },
+  {
+    path: 'add-payment',
+    component: AddPaymentComponent,
+  },
+  {
+    path: 'edit-payment/:id',
+    component: EditPaymentComponent,
+  },
+];
 
 @NgModule({
-  imports: [SharedModule, HomePageRoutingModule],
-  declarations: [HomePage, FormComponent, EditComponent],
+  imports: [SharedModule, RouterModule.forChild(routes)],
+  declarations: [HomePage, AddPaymentComponent, EditPaymentComponent],
 })
 export class HomePageModule {}

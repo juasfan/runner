@@ -1,49 +1,68 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { Payment, RecordService } from 'src/app/shared/services/record.service';
 import * as moment from 'moment';
 import { DecimalPipe } from '@angular/common';
-import { IonSlides, NavController } from '@ionic/angular';
-import { DailyRecord, HomeService, Payment } from './home.service';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  product_total: number = 0;
-  delivery_total: number = 0;
-  total: number = 0;
+  delivery_total: number;
+  product_total: number;
+  total: number;
 
-  @ViewChild('daySlides', { static: false }) daySlides: IonSlides;
-  days: string[] = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
-
-  slideOpts = {
-    slidesPerView: 'auto',
-    spaceBetween: 16,
-  };
+  records: DailyRecord[] = [];
 
   constructor(
-    private navController: NavController,
-    private localStorage: LocalStorageService,
-    private homeService: HomeService
+    private navCtrl: NavController,
+    private recordService: RecordService
   ) {}
 
-  ngOnInit() {}
+  async ngOnInit() {}
 
   async ionViewWillEnter() {
-    this.records = await this.localStorage.getItem('records');
-    this.total = this.product_total = this.delivery_total = 0;
+    let data = await this.recordService.getRecords();
+    this.delivery_total = 0;
+    this.product_total = 0;
+    this.total = 0;
 
-    this.records.forEach((record) => {
-      this.product_total += record.product;
-      this.delivery_total += record.delivery;
-      this.total += record.total;
+    if (data) {
+      data.forEach(({ delivery, product, total }) => {
+        this.delivery_total += delivery;
+        this.product_total += product ? product : 0;
+        this.total += total;
+      });
+
+      this.records = this.groupBy(data);
+    }
+  }
+
+  groupBy(data: Payment[]): DailyRecord[] {
+    const dates = [...new Set(data.map((payment) => payment.date))];
+
+    return dates.map((date) => {
+      let paymentsByDate = data.filter((val) => val.date === date);
+      const record = {
+        date: date,
+        payments: paymentsByDate,
+      };
+
+      return record;
     });
   }
 
-  formatDate(date: Date): string {
-    const data = moment(date).calendar();
+  addPayment() {
+    this.navCtrl.navigateForward('home/add-payment');
+  }
+
+  editPayment(id: string) {
+    this.navCtrl.navigateForward(`home/edit-payment/${id}`);
+  }
+
+  formatDate(date: string): string {
+    const data = moment(date, 'YYYYMMDD').calendar();
 
     if (data.includes('Today')) {
       return 'Today';
@@ -55,22 +74,17 @@ export class HomePage implements OnInit {
   }
 
   formatPrice(price: number): string {
-    return 'RM' + new DecimalPipe('en-US').transform(price, '1.2-2');
+    return price === 0
+      ? '0'
+      : 'RM' + new DecimalPipe('en-US').transform(price, '1.2-2');
   }
 
   todayDate(): string {
     return moment().format('MMMM Do');
   }
+}
 
-  add() {
-    this.navController.navigateForward('home/form');
-  }
-
-  edit(record: DailyRecord, payment: Payment) {
-    // this.homeService.selectedRecord = record;
-    // this.homeService.selectedPayment = payment;
-    // this.navController.navigateForward('home/edit');
-  }
-
-  records: DailyRecord[] = [];
+export interface DailyRecord {
+  date: string;
+  payments: Payment[];
 }
