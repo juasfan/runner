@@ -8,14 +8,26 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'settings',
+    loadChildren: () =>
+      import('./pages/settings/settings.module').then(
+        (m) => m.SettingsPageModule
+      ),
+  },
+  {
+    path: 'tab',
+    loadChildren: () =>
+      import('./pages/tab/tab.module').then((m) => m.TabPageModule),
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginPageModule),
+  },
+  {
     path: 'home',
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomePageModule),
-  },
-  {
-    path: 'record',
-    loadChildren: () =>
-      import('./pages/record/record.module').then((m) => m.RecordPageModule),
   },
 ];
 
